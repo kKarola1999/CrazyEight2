@@ -2,6 +2,8 @@ package edu.ib;
 
 import javafx.scene.image.Image;
 
+import javax.imageio.ImageIO;
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,8 +14,8 @@ public class Card {
     public Card(String faceName, String suit) {
         setFaceName(faceName);
         setSuit(suit);
-        String fileName = faceName + "_of_"+suit+".png";
-        image = new Image("/images/"+fileName);
+        String fileName = "./images/"+faceName+"_of_"+suit+".png";
+        image = new Image(fileName);
     }
 
     public String getFaceName() {
