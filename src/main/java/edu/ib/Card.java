@@ -2,18 +2,22 @@ package edu.ib;
 
 import javafx.scene.image.Image;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
 public class Card {
     private String faceName, suit;
-    private Image image;
+    private String image;
 
     public Card(String faceName, String suit) {
         setFaceName(faceName);
         setSuit(suit);
-        String fileName = "edu/ib/images/" +faceName+"_of_"+suit+".png";
-        image = new Image("file:"+fileName);
+        String fileName = "fxml/images/" +faceName+"_of_"+suit+".png";
+        //image= new Image((new File("/edu/ib/images/red_joker.png").toURI().toString()));
+        image=fileName;
+        //image = new Image(getClass().getResourceAsStream(fileName));
+
     }
 
     public String getFaceName() {
@@ -30,11 +34,11 @@ public class Card {
                             "queen","king","ace");
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

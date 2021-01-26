@@ -1,9 +1,11 @@
 package edu.ib;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -71,18 +73,26 @@ public class DeckViewController{
     }
 
     @FXML
-    void nextCardButtonPushed(Event event) {
-
-        deckImageView.setImage(deck.getBackOfCardImage());
+    void nextCardButtonPushed(ActionEvent event) {
+        //Image backOfCardImage1 = new Image((new File("/fxml/images/red_joker.png").toURI().toString()));
+        //File file = new File("/fxml/images/black_joker.png");
+        Image image = new Image(getClass().getResourceAsStream(deck.getBackOfCardImage()));
+        deckImageView.setImage(image);
+       // deckImageView.setImage(deck.getBackOfCardImage());
+        //deckImageView.setImage(backOfCardImage1);
+        //deckImageView.setCache(true);
 
     }
 
     @FXML
     void onAddCart(Event event) {
 
+        activeCardImageView.setImage(Player1Card1.getImage());
+        Player1Card1.setImage(deckImageView.getImage());
+
     }
 
-    private DeckOfCards deck=new DeckOfCards();
+    private DeckOfCards deck;
 
     @FXML
     void initialize() {
@@ -101,11 +111,23 @@ public class DeckViewController{
         assert nextCardButton != null : "fx:id=\"nextCardButton\" was not injected: check your FXML file 'DeckView.fxml'.";
         assert AddCart != null : "fx:id=\"AddCart\" was not injected: check your FXML file 'DeckView.fxml'.";
 
-        //deck = new DeckOfCards();
+        deck = new DeckOfCards();
         deck.shuffle();
 
         //Image backOfCardImage1 = new Image((new File("/edu/ib/images/red_joker.png").toURI().toString()));
         //deckImageView.setImage(backOfCardImage1);
+        //Image image = new Image(getClass().getResourceAsStream("/fxml/images/red_joker.png"));
+        //Image image = new Image(getClass().getResourceAsStream(deck.getBackOfCardImage()));
+
+        //deckImageView.setImage(image);
+        deck = new DeckOfCards();
+        deck.shuffle();
+
+        Image image1 = new Image(getClass().getResourceAsStream(deck.getBackOfCardImage()));
+        deckImageView.setImage(image1);
+        //Image image2 = new Image(getClass().getResourceAsStream(deck.dealTopCard().getImage()));
+
+        //Player1Card1.setImage(image2);
 
 
     }
