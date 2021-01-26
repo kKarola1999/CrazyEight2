@@ -2,6 +2,7 @@ package edu.ib;
 
 import javafx.scene.image.Image;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +25,7 @@ public class DeckOfCards {
      */
     public DeckOfCards(ArrayList<Card> deck) {
         this.deck = deck;
-        backOfCardImage = new Image("/images/backOfCard.png");
+        backOfCardImage = new Image((new File("/edu/ib/images/red_joker.png").toURI().toString()));
     }
 
     /**
@@ -44,7 +45,7 @@ public class DeckOfCards {
             for (String faceName:faceNames)
                 deck.add(new Card(faceName,suit));
         }
-        backOfCardImage = new Image("/images/backOfCard.png");
+        backOfCardImage = new Image("file:/fxml/images/red_joker.png");
     }
 
     public ArrayList<Card> getDeck() {
